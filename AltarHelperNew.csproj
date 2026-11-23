@@ -29,4 +29,9 @@
   <!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">-->
   <!--<Exec Command="XCOPY &quot;$(OutDir)*.*&quot; &quot;$(exapiPackage)\Plugins\Compiled\$(TargetName)\&quot; /S /Y" />-->
   <!--</Target>-->
+  <!--Auto-remove .git from this plugin's source folder (if present from a git clone) before build,
+      so ExileCore's PluginUpdater doesn't try to treat this folder as a git repo.-->
+  <Target Name="RemoveGitFolder" BeforeTargets="BeforeBuild">
+    <RemoveDir Directories="$(MSBuildProjectDirectory)\.git" Condition="Exists('$(MSBuildProjectDirectory)\.git')" />
+  </Target>
 </Project>
