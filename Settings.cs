@@ -32,6 +32,11 @@ namespace AltarHelperNew
                     if (ImGui.TreeNode("Mods & Weight"))
                     {
                         ImGui.InputTextWithHint("##UnitFilter", "Filter", ref unitFilter, 100);
+                        ImGui.SameLine();
+                        if (ImGui.Button("Reset Weight"))
+                        {
+                            ModTiers.Clear();
+                        }
 
                         if (ImGui.BeginTable("UnitConfig", 4, ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.Borders))
                         {
